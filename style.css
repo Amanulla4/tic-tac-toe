@@ -2,66 +2,112 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 body {
-    background: #f0f0f0;
+    background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
+    animation: fadeIn 1.2s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
 }
 
 .game-container {
     text-align: center;
+    background: white;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    animation: popIn 0.5s ease;
+}
+
+@keyframes popIn {
+    0% { transform: scale(0.9); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
 }
 
 h1 {
     margin-bottom: 20px;
-    color: #333;
+    color: #2c3e50;
+    font-size: 2.5rem;
+    animation: slideDown 0.6s ease-out;
+}
+
+@keyframes slideDown {
+    0% { transform: translateY(-20px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
 }
 
 .board {
     display: grid;
     grid-template-columns: repeat(3, 100px);
-    gap: 5px;
-    margin-bottom: 20px;
+    gap: 10px;
+    margin-bottom: 25px;
 }
 
 .cell {
     width: 100px;
     height: 100px;
-    background-color: white;
-    border: 2px solid #333;
+    background-color: #ffffff;
+    border: 3px solid #34495e;
     font-size: 2.5rem;
+    font-weight: bold;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    transition: transform 0.2s ease, background-color 0.3s ease;
 }
 
 .cell:hover {
-    background-color: #f9f9f9;
+    background-color: #d1f2eb;
+    transform: scale(1.05);
+}
+
+.cell.X {
+    color: #e74c3c;
+    animation: bounceIn 0.3s ease;
+}
+
+.cell.O {
+    color: #3498db;
+    animation: bounceIn 0.3s ease;
+}
+
+@keyframes bounceIn {
+    0% { transform: scale(0.6); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
 }
 
 .message {
-    font-size: 1.2rem;
-    margin-bottom: 10px;
-    color: #444;
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+    color: #2d3436;
+    animation: fadeIn 0.5s ease-in;
 }
 
 button {
-    padding: 10px 20px;
+    padding: 12px 25px;
     font-size: 1rem;
     cursor: pointer;
-    background-color: #333;
+    background-color: #8e44ad;
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
 
 button:hover {
-    background-color: #555;
+    background-color: #9b59b6;
+    transform: translateY(-2px);
 }
